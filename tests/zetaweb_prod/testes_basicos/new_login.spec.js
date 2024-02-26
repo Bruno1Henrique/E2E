@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { faker } from '@faker-js/faker/locale/en';
+import { faker } from '@faker-js/faker/locale/en'; //Gerador de dados aleatórios
 
 
 test('criando uma nova conta', async ({ page }) => {
@@ -22,4 +22,5 @@ const email = faker.internet.exampleEmail();
   await page.getByRole('button', { name: 'Cadastrar' }).click();
   await page.waitForTimeout(10000);
   await expect(page.locator('#z_app_toolbar').getByText('Dashboard')).toBeVisible();
+  // Confere se chegou no dashboard
 });
