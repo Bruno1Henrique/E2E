@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker/locale/en'; //Gerador de dados aleatórios
+//Esse arquivo contém as informações do login e ambiente
+const { BASE_URL, EMAIL, PASSWORD } = process.env; 
 
 
 test('criando uma nova conta', async ({ page }) => {
 const email = faker.internet.exampleEmail();
 
-  await page.goto('https://zetaweb.com.br/');
-  await page.goto('https://zetaweb.com.br/#/');
-  await page.goto('https://zetaweb.com.br/#/sign-in');
+  await page.goto(`${BASE_URL}/#/sign-in`);
   await page.getByRole('link', { name: 'Não possui uma conta?' }).click();
   await page.getByLabel('Nome completo').click();
   await page.getByLabel('Nome completo').fill(email);
